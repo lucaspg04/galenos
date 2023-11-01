@@ -1,0 +1,26 @@
+body {
+    background-color: aquamarine; /* Fondo gris claro */
+    font-family: Arial, sans-serif;
+}
+
+
+#divcard{
+    display: inline-block;
+    margin-left: 40%;
+}
+
+#divcard2{
+    display: inline-block;
+    margin-left: 38%;
+}
+
+#divcard3{
+    display: inline-block;
+}
+
+footer {
+    background-color: #3498db; /* Pie de página azul */
+    color: #fff; /* Texto blanco */
+    text-align: center;
+    padding: 10px;
+}
