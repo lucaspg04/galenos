@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="reserva.css">
-    <title>Reserva de hora</title>
-</head>
-<body>
-    <br>
-    <br>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenido %}
 
     <h1 style="text-align: center;"> Reserva tu hora</h1>
     <h5 style="text-align: center;"> Selecciona tipo de hora</h5>
@@ -18,7 +11,7 @@
     <br>
 
     <div class="card" style="width: 18rem;" id="divcard">
-        <img src="imagenes/tratamiento_clinico.png" class="card-img-top" alt="...">
+        <img src="{% static "img/tratamiento_clinico.png" %}" class="card-img-top" alt="...">
         <div class="card-body">
             <h4 style="text-align: center;">Agendar consulta médica presencial</h4>
             <br>
@@ -37,35 +30,60 @@
       <br>
 
       <div class="card" style="width: 11rem; text-align: center;" id="divcard2">
-        <img src="imagenes/login.img" class="card-img-top" alt="10%">
+        <img src="{% static "img/login.img" %}" class="card-img-top" alt="10%">
         <div class="card-body">
               <a href="agendar_hora.html" class="btn btn-primary">reserva tu hora</a>
         </div>
     </div>
 
     <div class="card" style="width: 11rem; text-align: center;" id="divcard3">
-        <img src="imagenes/login.img" class="card-img-top" alt="10%">
+        <img src="{% static "img/login.img" %}" class="card-img-top" alt="10%">
         <div class="card-body">
               <a href="reserva.html" class="btn btn-primary">anular tu hora</a>
         </div>
     </div>
 
+    {% endblock contenido %}
 
+    <h1>Datos del Paciente</h1>
+    <div id="paciente-info"></div>
 
-
-    <br>
-    <br>
-    <br>
-    <footer>
-        <img src="imagenes/convenios.png" alt="">
-        <br>
-        <br>
-        <br>
-        &copy; 2023 Clínica de Salud
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-
-</body>
-</html>
+    <script>
+        // Función para consumir la API
+        function getPacientesData() {
+            fetch('https://api-tareas-03.lucpoblete.repl.co/api/pacientes')
+                .then(response => response.json())
+                .then(data => {
+                    // Maneja la respuesta de la API aquí
+                    const pacienteInfo = document.getElementById('paciente-info');
+    
+                    if (Array.isArray(data) && data.length > 0) {
+                        pacienteInfo.innerHTML = '<h3>Información de Pacientes:</h3>';
+                        data.forEach(paciente => {
+                            pacienteInfo.innerHTML += `
+                                <p>Apellidos: ${paciente.P_apellido}</p>
+                                <p>Apellidos: ${paciente.S_apellido}</p>
+                                <p>Contraseña: ${paciente.Contraseña}</p>
+                                <p>Email: ${paciente.Email}</p>
+                                <p>Primer nombre: ${paciente['Pnombre']}</p>
+                                <p>Segundo nombre: ${paciente['Snombre']}</p>
+                                <p>Teléfono: ${paciente.Telefono}</p>
+                                <p>RUT: ${paciente.rut}</p>
+                                <hr>
+                            `;
+                        });
+                    } else {
+                        pacienteInfo.innerHTML = 'No se encontraron pacientes.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al consumir la API:', error);
+                });
+        }
+    
+        // Llama a la función para obtener los datos de los pacientes
+        datas = getPacientesData();
+        console.log(datas)
+    </script>
+    
+    </script>

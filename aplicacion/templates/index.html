@@ -1,47 +1,28 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'aplicacion/css/bootstrap.min.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="aplicacion/css/index.css">
 
-    <!-- Latest compiled JavaScript -->
-    <script src="{% static 'aplicacion/js/bootstrap.bundle.min.js' %}"></script>
-    
-    <title>Inicio</title>
-</head>
-<body>
-    
-    <header>
-        <h1>CLINICA DAVILA PEGAO BALEAO</h1>
-    </header>
-
-    <br>
-    <br>
-    <h3 style="text-align: center;">ITEMS DE LA PAGINA</h3>
-    
+{% block contenido %}
         <div class="card" style="width: 14rem;" id="divcard">
-        <img src="imagenes/medico.img" class="card-img-top" alt="10%">
+        <img src="{% static "img/medico.img" %} " class="card-img-top" alt="10%">
         <div class="card-body">
           <h5 class="card-title">Registro Medico</h5>
           <p class="card-text"></p>
-          <a href="registro_medico.html" class="btn btn-primary">Ir Haya..</a>
+          <a href="{% url "registroMedico" %}" class="btn btn-primary">Ir allá..</a>
         </div>
         </div>
 
         <div class="card" style="width: 14rem;" id="divcard">
-            <img src="imagenes/paciente.img" class="card-img-top" alt="10%">
+            <img src="{% static "img/paciente.img" %}" class="card-img-top" alt="10%">
             <div class="card-body">
               <h5 class="card-title">Registro Paciente</h5>
               <p class="card-text"></p>
-              <a href="registro_paciente.html" class="btn btn-primary">Ir Haya..</a>
+              <a href="{% url "registroPaciente" %}" class="btn btn-primary">Ir allá..</a>
             </div>
             </div>
 
         <div class="card" style="width: 11rem;" id="divcard">
-            <img src="imagenes/login.img" class="card-img-top" alt="10%">
+            <img src="{% static "img/login.img" %} " class="card-img-top" alt="10%">
             <div class="card-body">
                 <h5 class="card-title">Login</h5>
                   <p class="card-text"></p>
@@ -50,19 +31,15 @@
         </div>
 
         <div class="card" style="width: 11rem;" id="divcard">
-          <img src="imagenes/agenda_hora.jpg" class="card-img-top" alt="10%">
+          <img src="{% static "img/agenda_hora.jpg" %} " class="card-img-top" alt="10%">
           <div class="card-body">
               <h5 class="card-title">reserva tu hora</h5>
                 <p class="card-text"></p>
-                <a href="reserva.html" class="btn btn-primary">Ir Haya..</a>
+                <a href="{% url "reservaHora" %}" class="btn btn-primary">Ir allá..</a>
           </div>
       </div>
 
 
-
-
-
-        
         <div >
             <div id="carouselExampleDark" class="carousel carousel-dark slide">
                 <div class="carousel-indicators">
@@ -72,21 +49,21 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="imagenes/medicamento.img" class="d-block w-100" alt="..." class="imgg">
+                    <img src="{% static "img/medicamento.img" %} " class="d-block w-100" alt="..." class="imgg">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>Medicamentos</h5>
                       <p>todos los medicamentos que necesitas y la mejor calidad</p>
                     </div>
                   </div>
                   <div class="carousel-item" data-bs-interval="2000">
-                    <img src="imagenes/calidadmedicos.img" class="d-block w-100" alt="..." class="imgg">
+                    <img src="{% static "img/calidadmedicos.img" %} " class="d-block w-100" alt="..." class="imgg">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>La mejor calidad de medicos</h5>
                       <p>La mejor calidad en cuanto a salud</p>
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img src="imagenes/especialidadesmedicos.img" class="d-block w-100" alt="..." class="imgg">
+                    <img src="{% static "img/especialidadesmedicos.img" %} " class="d-block w-100" alt="..." class="imgg">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>Todas las especialidades de la salud</h5>
                       <p>Una gran variedad de especialidades de la salud </p>
@@ -112,12 +89,12 @@
     <br>
     <br>
 
-       <!-- Noticias paginas -->
+    <!-- Noticias paginas -->
     <h2 style="font-family: serif; text-align: center;" >Novedades Clinicas</h2>
     <br>
 
     <div class="card" style="width: 18rem;" id="noticias">
-        <img src="imagenes/tratamiento_clinico.png" class="card-img-top" alt="...">
+        <img src="{% static "img/tratamiento_clinico.png" %}" class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-text">En diagnóstico y tratamiento de enfermedades cardiacas: Clínica 
             davila entrega un cuidado integral al recién nacido y a su madre</p>
@@ -125,7 +102,7 @@
       </div>
 
       <div class="card" style="width: 18rem;" id="noticias">
-        <img src="imagenes/tratamiento_cardiaco.jpg" class="card-img-top" alt="...">
+        <img src="{% static "img/tratamiento_cardiaco.jpg" %}" class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-text">Laboratorio y Pabellón de Hemodinamia: Todo para el diagnóstico y tratamiento 
             de enfermedades cardiovasculares</p>
@@ -133,7 +110,7 @@
       </div>
 
       <div class="card" style="width: 18rem;" id="noticias">
-        <img src="imagenes/emilio.jpg" class="card-img-top" alt="...">
+        <img src="{% static "img/emilio.jpg" %}" class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-text">Emilio Matamala: “Tras la operación, volví a ser el de antes”</p>
         </div>
@@ -145,21 +122,21 @@
       <br>
 
       <div class="card" style="width: 18rem;" id="noticias">
-        <img src="imagenes/Diznarda.jpg" class="card-img-top" alt="...">
+        <img src="{% static "img/Diznarda.jpg" %}" class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-text">Diznarda Castro: “La cirugía me cambió la vida”</p>
         </div>
       </div>     
 
       <div class="card" style="width: 18rem;" id="noticias">
-        <img src="imagenes/anticoncepcion_masculina.jpg" class="card-img-top" alt="...">
+        <img src="{% static "img/anticoncepcion_masculina.jpg" %}" class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-text">Anticoncepción masculina y vasectomía</p>
         </div>
       </div>
 
       <div class="card" style="width: 18rem;" id="noticias">
-        <img src="imagenes/lab_pulmonar.jpg" class="card-img-top" alt="...">
+        <img src="{% static "img/lab_pulmonar.jpg" %} " class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-text">Laboratorio de Función Pulmonar: Evaluación integral de la salud respiratoria</p>
         </div>
@@ -175,20 +152,4 @@
     <br>
     <br>
     <br>
-    <footer>
-        <img src="imagenes/convenios.png" alt="">
-        <br>
-        <br>
-        <br>
-        &copy; 2023 Clínica de Salud
-    </footer>
-
-    
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-
-</body>
-</html>
-
+{% endblock contenido %}
